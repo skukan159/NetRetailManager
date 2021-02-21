@@ -63,5 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Sale.sql" />
+    <Build Include="dbo\Tables\SaleDetail.sql" />
+    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Tables\Inventory.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DataProject.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishLocations\DataProject.publish.xml" />
   </ItemGroup>
 </Project>
