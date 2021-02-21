@@ -3,7 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "DataManager\DataManager.csproj", "{6C2E7D42-1DDB-4D7C-983B-63F6CBC85055}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DataProject", "DataProject\DataProject.sqlproj", "{58E4F5F7-FB56-4398-94E7-A259EFB102B8}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C2E7D42-1DDB-4D7C-983B-63F6CBC85055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2E7D42-1DDB-4D7C-983B-63F6CBC85055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2E7D42-1DDB-4D7C-983B-63F6CBC85055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2E7D42-1DDB-4D7C-983B-63F6CBC85055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E4F5F7-FB56-4398-94E7-A259EFB102B8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
