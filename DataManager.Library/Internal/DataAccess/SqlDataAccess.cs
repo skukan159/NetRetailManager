@@ -14,6 +14,7 @@ namespace DataManager.Library.Internal.DataAccess
 
         private IDbConnection _connection;
         private IDbTransaction _transaction;
+        private bool isClosed = false;
 
 
         public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionString)
@@ -40,6 +41,7 @@ namespace DataManager.Library.Internal.DataAccess
             _connection.Open();
 
             _transaction = _connection.BeginTransaction();
+            isClosed = false;
         }
 
         public async Task SaveDataInTransaction<T>(string storedProcedure, T parameters)
@@ -62,17 +64,34 @@ namespace DataManager.Library.Internal.DataAccess
         {
             _transaction?.Commit();
             _connection?.Close();
+
+            isClosed = true;
         }
 
         public void RollbackTransaction()
         {
             _transaction?.Rollback();
             _connection?.Close();
+
+            isClosed = true;
         }
 
         public void Dispose()
         {
-            CommitTransaction();
+            if (isClosed == false)
+            {
+                try
+                {
+                    CommitTransaction();
+                }
+                catch
+                {
+                    // TODO - log
+                    throw;
+                }
+            }
+            _transaction = null;
+            _connection = null;
         }
     }
 }
