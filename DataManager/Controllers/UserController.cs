@@ -18,7 +18,7 @@ namespace DataManager.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IUserData _userData;
+        private readonly IUserData _userData;
 
         public UserController(IUserData userData)
         {

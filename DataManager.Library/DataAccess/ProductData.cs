@@ -7,7 +7,7 @@ namespace DataManager.Library.DataAccess
 {
     public class ProductData : IProductData
     {
-        private string connectionString;
+        private readonly string connectionString;
 
         public ProductData(string connString)
         {

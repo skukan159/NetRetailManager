@@ -19,7 +19,7 @@ namespace DataManager.Controllers
     [Authorize]
     public class SaleController : ControllerBase
     {
-        private ISaleData _saleData;
+        private readonly ISaleData _saleData;
 
 
 

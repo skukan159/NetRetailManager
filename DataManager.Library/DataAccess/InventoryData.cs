@@ -9,7 +9,7 @@ namespace DataManager.Library.DataAccess
 {
     public class InventoryData : IInventoryData
     {
-        private string _connectionString;
+        private readonly string _connectionString;
 
         public InventoryData(string connectionString)
         {

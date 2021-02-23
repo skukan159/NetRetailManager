@@ -22,7 +22,7 @@ namespace DataManagmentTests.IntegrationTests
         protected readonly HttpClient testClient;
         private readonly IServiceProvider _serviceProvider;
         private readonly IServiceScope _serviceScope;
-        private ApplicationDbContext dbCon;
+        private readonly ApplicationDbContext dbCon;
 
         public IntegrationTest()
         {
@@ -44,15 +44,12 @@ namespace DataManagmentTests.IntegrationTests
 
                         var sp = services.BuildServiceProvider();
 
-                        using (var scope = sp.CreateScope())
-                        {
-                            var scopedServices = scope.ServiceProvider;
-                            var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+                        using var scope = sp.CreateScope();
+                        var scopedServices = scope.ServiceProvider;
+                        var db = scopedServices.GetRequiredService<ApplicationDbContext>();
 
 
-                            db.Database.EnsureCreated();
-
-                        }
+                        db.Database.EnsureCreated();
 
                     });
 

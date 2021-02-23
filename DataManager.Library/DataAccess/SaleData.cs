@@ -9,7 +9,7 @@ namespace DataManager.Library.DataAccess
 {
     public class SaleData : ISaleData
     {
-        private string connectionString;
+        private readonly string connectionString;
 
         public SaleData(string connString)
         {
