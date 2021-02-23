@@ -26,11 +26,11 @@ namespace DataManager.Controllers
         }
 
         [HttpPost(ApiRoutes.User.GetCurrent)]
-        public ActionResult<UserModel> GetCurrentUser()
+        public async Task<ActionResult<UserModel>> GetCurrentUser()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var currentUser = _userData.GetUserById(userId).First();
-            return Ok(currentUser);
+            var currentUser = await _userData.GetUserById(userId);
+            return Ok(currentUser[0]);
         }
 
 

@@ -3,6 +3,7 @@ using DataManager.Library.DataAccess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,10 +22,10 @@ namespace DataManager.Controllers
         }
 
         [HttpPost(ApiRoutes.Product.Get)]
-        public ActionResult<List<string>> Get()
+        public async Task<ActionResult<List<string>>> Get()
         {
 
-            var products = _productData.GetProducts();
+            var products = await _productData.GetProducts();
             return Ok(products);
         }
 
