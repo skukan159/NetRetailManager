@@ -22,6 +22,7 @@ namespace DataManager.Installers
             services.AddSingleton<IUserData>(x => ActivatorUtilities.CreateInstance<UserData>(x, configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IProductData>(x => ActivatorUtilities.CreateInstance<ProductData>(x, configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<ISaleData>(x => ActivatorUtilities.CreateInstance<SaleData>(x, configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<IInventoryData>(x => ActivatorUtilities.CreateInstance<InventoryData>(x, configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }

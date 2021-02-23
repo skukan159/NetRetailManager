@@ -29,5 +29,12 @@ namespace DataManager.Library.DataAccess
 
             //return output;
         }
+
+        public async Task<List<SaleReportModel>> GetSaleReport()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var output = await sql.LoadData<SaleReportModel, dynamic>("dbo.spSale_SaleReport", new { }, connectionString);
+            return output;
+        }
     }
 }
