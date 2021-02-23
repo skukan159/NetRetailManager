@@ -25,6 +25,7 @@ namespace DataManager.Contracts
         public static class Sale
         {
             public const string Post = Base + "/sale";
+            public const string GetSalesReport = Base + "/sale/SalesReport";
         }
 
         public static class Identity

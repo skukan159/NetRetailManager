@@ -34,5 +34,17 @@ namespace DataManager.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpGet(ApiRoutes.Sale.GetSalesReport)]
+        public async Task<ActionResult<SaleResponse>> GetSalesReport()
+        {
+            var response = await _saleData.GetSaleReport();
+
+            throw new NotImplementedException();
+            //TODO - Create response object and map to the response obj
+
+            //return response;
+
+        }
     }
 }
