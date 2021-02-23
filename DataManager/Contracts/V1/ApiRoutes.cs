@@ -14,7 +14,17 @@ namespace DataManager.Contracts
 
         public static class User
         {
-            public const string GetCurrent = Base + "/current";
+            public const string GetCurrent = Base + "/user/current";
+        }
+
+        public static class Product
+        {
+            public const string Get = Base + "/product";
+        }
+
+        public static class Sale
+        {
+            public const string Post = Base + "/sale";
         }
 
         public static class Identity

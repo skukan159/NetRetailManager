@@ -7,24 +7,27 @@ using System.Threading.Tasks;
 
 namespace DataManager.Library.DataAccess
 {
-    public class UserData : IUserData
+    public class SaleData : ISaleData
     {
         private string connectionString;
 
-        public UserData(string connString)
+        public SaleData(string connString)
         {
             connectionString = connString;
         }
 
-        public async Task<List<UserModel>> GetUserById(string id)
+        public async Task SaveSale()
         {
+            // TODO
             SqlDataAccess sql = new SqlDataAccess();
 
-            var p = new { Id = id };
+            List<SaleDetailModel> details = new List<SaleDetailModel>();
 
-            var output = await sql.LoadData<UserModel, dynamic>("dbo.spUserLookup", p, connectionString);
+            throw new NotImplementedException();
 
-            return output;
+            //var output = await sql.LoadData<ProductModel, dynamic>("dbo.spProduct_GetAll", new { }, connectionString);
+
+            //return output;
         }
     }
 }

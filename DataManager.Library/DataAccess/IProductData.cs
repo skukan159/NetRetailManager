@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataManager.Library.DataAccess
 {
-    public interface IUserData
+    public interface IProductData
     {
-        Task<List<UserModel>> GetUserById(string id);
+        Task<List<ProductModel>> GetProducts();
+        Task<ProductModel> GetProductById(int productId);
     }
 }
