@@ -4,32 +4,33 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DataManager.Library.Internal.DataAccess
 {
     internal class SqlDataAccess
     {
-        public string GetConnectionString(string name)
-        {
-            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
-        }
+        /*  public string GetConnectionString(string name)
+          {
+              return ConfigurationManager.ConnectionStrings[name].ConnectionString;
+          }*/
 
-        public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
+        public async Task<List<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionString)
         {
-            string connectionString = GetConnectionString(connectionStringName);
+            //string connectionString = GetConnectionString(connectionStringName);
             using IDbConnection cnn = new SqlConnection(connectionString);
-            List<T> rows = cnn
-                .Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure)
-                .ToList();
+            var result = await cnn
+                .QueryAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            List<T> rows = result.ToList();
 
             return rows;
         }
 
-        public void SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
+        public async Task SaveData<T>(string storedProcedure, T parameters, string connectionString)
         {
-            string connectionString = GetConnectionString(connectionStringName);
+            //string connectionString = GetConnectionString(connectionStringName);
             using IDbConnection cnn = new SqlConnection(connectionString);
-            cnn.Execute(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            await cnn.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
         }
     }
 }

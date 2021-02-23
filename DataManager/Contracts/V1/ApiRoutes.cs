@@ -14,12 +14,7 @@ namespace DataManager.Contracts
 
         public static class User
         {
-            public const string GetAll = Base + "/user";
-            public const string GetByNeighborhood = Base + "/moments/{neighborhoodId}";
-            public const string Get = Base + "/moments/{momentId}";
-            public const string Create = Base + "/moments";
-            public const string Update = Base + "/moments/{momentId}";
-            public const string Delete = Base + "/moments/{momentId}";
+            public const string GetCurrent = Base + "/current";
         }
 
         public static class Identity

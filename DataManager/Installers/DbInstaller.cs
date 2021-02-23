@@ -1,4 +1,5 @@
 ﻿using DataManager.Data;
+using DataManager.Library.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,10 +15,11 @@ namespace DataManager.Installers
                 options
                 .UseSqlServer(
                     configuration
-                    .GetConnectionString("DefaultConnection"))
+                    .GetConnectionString("IdentityConnection"))
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors());
 
+            services.AddSingleton<IUserData>(x => ActivatorUtilities.CreateInstance<UserData>(x, configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }

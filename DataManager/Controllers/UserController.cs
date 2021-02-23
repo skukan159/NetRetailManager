@@ -1,9 +1,12 @@
-﻿using DataManager.Library.DataAccess;
+﻿using DataManager.Contracts;
+using DataManager.Library.DataAccess;
+using DataManager.Library.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,17 +14,23 @@ using System.Threading.Tasks;
 namespace DataManager.Controllers
 {
     [Authorize]
-    [Route("api/User")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
+        private IUserData _userData;
 
-        [HttpGet("/api/[controller]/getuser")]
-        public ActionResult<List<UserData>> GetCurrentUser()
+        public UserController(IUserData userData)
+        {
+            _userData = userData;
+        }
+
+        [HttpPost(ApiRoutes.User.GetCurrent)]
+        public ActionResult<UserModel> GetCurrentUser()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            UserData data = new UserData();
-            return Ok(data.GetUserById(userId));
+            var currentUser = _userData.GetUserById(userId).First();
+            return Ok(currentUser);
         }
 
 
