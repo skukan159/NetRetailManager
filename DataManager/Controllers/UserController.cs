@@ -32,7 +32,13 @@ namespace DataManager.Controllers
             var currentUser = await _userData.GetUserById(userId);
             return Ok(currentUser[0]);
         }
-
+        [HttpDelete(ApiRoutes.User.Delete)]
+        [Authorize]
+        public async Task<ActionResult> DeleteUser([FromRoute] string id)
+        {
+            await _userData.DeleteUserById(id);
+            return Ok();
+        }
 
     }
 }

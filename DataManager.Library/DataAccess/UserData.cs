@@ -26,5 +26,14 @@ namespace DataManager.Library.DataAccess
 
             return output;
         }
+
+        public async Task DeleteUserById(string id)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var p = new { Id = id };
+
+            await sql.SaveData("dbo.spUserDelete", p, connectionString);
+        }
     }
 }

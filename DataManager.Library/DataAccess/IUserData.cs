@@ -9,5 +9,6 @@ namespace DataManager.Library.DataAccess
     public interface IUserData
     {
         Task<List<UserModel>> GetUserById(string id);
+        Task DeleteUserById(string id);
     }
 }

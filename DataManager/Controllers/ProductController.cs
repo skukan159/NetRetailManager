@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace DataManager.Controllers
 {
-    [Route("api/[controller]")]
     [Authorize]
     [ApiController]
     public class ProductController : ControllerBase

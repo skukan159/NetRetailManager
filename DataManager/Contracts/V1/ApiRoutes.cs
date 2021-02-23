@@ -15,6 +15,7 @@ namespace DataManager.Contracts
         public static class User
         {
             public const string GetCurrent = Base + "/user/current";
+            public const string Delete = Base + "/user";
         }
 
         public static class Product
